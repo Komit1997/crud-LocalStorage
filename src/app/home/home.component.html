@@ -1,0 +1,62 @@
+
+<span><h1>CRUD Using Localstorage</h1></span>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5 card card-body rounded shadow">
+          
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email </th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                  <tr *ngFor = "let item of newListUser, let i = index" >
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.firstname}}</td>
+                    <td>{{item.lastname}}</td>
+                    <td>{{item.email}}</td>
+                    <button (click)="doDelete(i)"  type="button" class="btn btn-info ">Delete</button> &nbsp;
+                    <button (click)="doedit(item)" type="button" class="btn btn-info ">Edit</button> &nbsp;
+
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div> &nbsp;
+        <div class="col-md-5 card card-body rounded shadow pl-3">
+
+          <form [formGroup]="formvalue" >
+            <div class="mb-3">
+              
+                <label for="exampleInputEmail1" class="form-label">First Name</label>
+                <input  formControlName="firstname" type="text" class="form-control" >
+                <input  formControlName="id"  hidden type="text" class="form-control" >
+
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                <input formControlName="lastname" type="text" class="form-control">
+              </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input formControlName="email" type="email" class="form-control"  >
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                
+                <div>
+                <button  (click)="doAddUser()" type="submit" class="btn btn-primary">Add User</button> &nbsp;
+                <button  (click)="doUpdate(formvalue.value)" type="button" class="btn btn-success ">Update</button>
+
+
+                </div>
+              
+              </form>
+        </div>
+    </div>
+</div>
